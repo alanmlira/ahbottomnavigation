@@ -44,6 +44,7 @@ android {
 
 dependencies {
     compile 'com.android.support:design:26.1.0'
+    compile 'com.github.jitpack:gradle-simple:1.0'
 }
 
 // Place it at the end of the file
