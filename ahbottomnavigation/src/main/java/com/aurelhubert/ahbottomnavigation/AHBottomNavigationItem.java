@@ -8,6 +8,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 
@@ -155,8 +156,6 @@ public class AHBottomNavigationItem {
 			try {
 				return VectorDrawableCompat.create(context.getResources(), drawableRes, null);
 			}catch (Resources.NotFoundException e){
-				return AppCompatResources.getDrawable(context, drawableRes);
-			} catch (Resources.NotFoundException e) {
 				return ContextCompat.getDrawable(context, drawableRes);
 			}
 		}

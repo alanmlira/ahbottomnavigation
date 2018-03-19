@@ -610,8 +610,6 @@ public class AHBottomNavigation extends FrameLayout {
 			});
 			view.setSoundEffectsEnabled(soundEffectsEnabled);
 
-			int width = current ? (int) selectedItemWidth :
-
 			if (itemsEnabledStates[i]) {
 				icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getDrawable(context),
 						currentItem == i ? itemActiveColor : itemInactiveColor, forceTint));
