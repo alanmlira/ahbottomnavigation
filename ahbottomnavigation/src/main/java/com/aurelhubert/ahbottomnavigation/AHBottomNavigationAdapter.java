@@ -42,7 +42,7 @@ public class AHBottomNavigationAdapter {
 		mMenu = popupMenu.getMenu();
 		mSelectedMenu = popupMenu.getMenu();
 		activity.getMenuInflater().inflate(menuRes, mMenu);
-		activity.getMenuInflater().inflate(menuRes, mSelectedMenu);
+		activity.getMenuInflater().inflate(selectedMenu, mSelectedMenu);
 	}
 
 	/**
