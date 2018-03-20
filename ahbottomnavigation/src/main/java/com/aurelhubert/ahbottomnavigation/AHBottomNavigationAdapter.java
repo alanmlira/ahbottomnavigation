@@ -40,9 +40,11 @@ public class AHBottomNavigationAdapter {
 	public AHBottomNavigationAdapter(Activity activity, @MenuRes int menuRes, @MenuRes int selectedMenu) {
 		PopupMenu popupMenu = new PopupMenu(activity, null);
 		mMenu = popupMenu.getMenu();
-		mSelectedMenu = popupMenu.getMenu();
-		activity.getMenuInflater().inflate(menuRes, mMenu);
-		activity.getMenuInflater().inflate(selectedMenu, mSelectedMenu);
+		popupMenu.getMenuInflater().inflate(menuRes, mMenu);
+
+		PopupMenu popupSelectedMenu = new PopupMenu(activity, null);
+		mSelectedMenu = popupSelectedMenu.getMenu();
+		popupSelectedMenu.getMenuInflater().inflate(selectedMenu, mSelectedMenu);
 	}
 
 	/**
