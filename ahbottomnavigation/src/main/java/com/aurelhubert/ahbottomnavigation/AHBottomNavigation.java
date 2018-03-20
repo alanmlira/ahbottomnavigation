@@ -654,15 +654,17 @@ public class AHBottomNavigation extends FrameLayout {
 
 		if (currentItem == itemIndex) {
 			if (tabSelectedListener != null && useCallback) {
-				final View view = views.get(0);
-				view.setSelected(true);
-				ImageView icon = view.findViewById(R.id.bottom_navigation_item_icon);
+				if (!views.isEmpty()) {
+					View view = views.get(0);
+					view.setSelected(true);
+					ImageView icon = view.findViewById(R.id.bottom_navigation_item_icon);
 
-				if (forceTint) {
-					AHHelper.updateDrawableColor(context, items.get(itemIndex).getDrawable(context), icon,
-							itemInactiveColor, itemActiveColor, forceTint);
-				} else {
-					AHHelper.updateDrawable(context, items.get(itemIndex).getSelectedDrawable(context), icon);
+					if (forceTint) {
+						AHHelper.updateDrawableColor(context, items.get(itemIndex).getDrawable(context), icon,
+								itemInactiveColor, itemActiveColor, forceTint);
+					} else {
+						AHHelper.updateDrawable(context, items.get(itemIndex).getSelectedDrawable(context), icon);
+					}
 				}
 				tabSelectedListener.onTabSelected(itemIndex, true);
 			}
