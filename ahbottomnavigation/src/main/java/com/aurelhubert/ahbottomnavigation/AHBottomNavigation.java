@@ -580,7 +580,9 @@ public class AHBottomNavigation extends FrameLayout {
 
 			if (colored) {
 				if (current) {
-					setBackgroundColor(item.getColor(context));
+					if (forceTint) {
+						setBackgroundColor(item.getColor(context));
+					}
 					currentColor = item.getColor(context);
 				}
 			} else {
@@ -596,7 +598,7 @@ public class AHBottomNavigation extends FrameLayout {
 						current ? itemActiveColor : itemInactiveColor, forceTint));
 			} else {
 				if (current) {
-					icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getSelectedDrawable(context)));
+					AHHelper.updateDrawable(context, items.get(itemIndex).getSelectedDrawable(context), icon);
 				}
 			}
 
