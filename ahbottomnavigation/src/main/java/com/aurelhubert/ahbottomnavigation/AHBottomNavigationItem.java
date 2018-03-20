@@ -96,6 +96,19 @@ public class AHBottomNavigationItem {
 		this.title = title;
 		this.drawable = drawable;
 	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param title    String
+	 * @param drawable Drawable
+	 * @param selectedDrawable Drawable
+	 */
+	public AHBottomNavigationItem(String title, Drawable drawable, Drawable selectedDrawable) {
+		this.title = title;
+		this.drawable = drawable;
+		this.selectedDrawable = selectedDrawable;
+	}
 	
 	/**
 	 * Constructor
@@ -110,6 +123,15 @@ public class AHBottomNavigationItem {
 		this.color = color;
 	}
 
+
+	/**
+	 * Constructor
+	 *
+	 * @param title    String
+	 * @param drawable Drawable
+	 * @param selectedDrawable Drawable
+	 * @param color    Color
+	 */
 	public AHBottomNavigationItem(String title, Drawable drawable, Drawable selectedDrawable, @ColorInt int color) {
 		this.title = title;
 		this.drawable = drawable;

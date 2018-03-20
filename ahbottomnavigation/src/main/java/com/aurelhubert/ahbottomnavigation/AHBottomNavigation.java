@@ -533,9 +533,9 @@ public class AHBottomNavigation extends FrameLayout {
 			AHBottomNavigationItem item = items.get(itemIndex);
 
 			View view = inflater.inflate(R.layout.bottom_navigation_small_item, this, false);
-			ImageView icon = (ImageView) view.findViewById(R.id.bottom_navigation_small_item_icon);
-			TextView title = (TextView) view.findViewById(R.id.bottom_navigation_small_item_title);
-			TextView notification = (TextView) view.findViewById(R.id.bottom_navigation_notification);
+			ImageView icon = view.findViewById(R.id.bottom_navigation_small_item_icon);
+			TextView title = view.findViewById(R.id.bottom_navigation_small_item_title);
+			TextView notification = view.findViewById(R.id.bottom_navigation_notification);
 			icon.setImageDrawable(item.getDrawable(context));
 
 			if (titleState != TitleState.ALWAYS_HIDE) {

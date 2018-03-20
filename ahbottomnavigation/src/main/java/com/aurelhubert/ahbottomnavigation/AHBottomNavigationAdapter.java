@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class AHBottomNavigationAdapter {
 
-	private Menu mMenu;
+	private Menu mMenu, mSelectedMenu;
 	private List<AHBottomNavigationItem> navigationItems;
 
 	/**
@@ -28,6 +28,21 @@ public class AHBottomNavigationAdapter {
 		PopupMenu popupMenu = new PopupMenu(activity, null);
 		mMenu = popupMenu.getMenu();
 		activity.getMenuInflater().inflate(menuRes, mMenu);
+	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param activity
+	 * @param menuRes
+	 * @param selectedMenu
+	 */
+	public AHBottomNavigationAdapter(Activity activity, @MenuRes int menuRes, @MenuRes int selectedMenu) {
+		PopupMenu popupMenu = new PopupMenu(activity, null);
+		mMenu = popupMenu.getMenu();
+		mSelectedMenu = popupMenu.getMenu();
+		activity.getMenuInflater().inflate(menuRes, mMenu);
+		activity.getMenuInflater().inflate(menuRes, mSelectedMenu);
 	}
 
 	/**
@@ -53,13 +68,28 @@ public class AHBottomNavigationAdapter {
 		}
 
 		if (mMenu != null) {
-			for (int i = 0; i < mMenu.size(); i++) {
+			int menuSize = mMenu.size();
+			if (mSelectedMenu != null) {
+				if (mMenu.size() > mSelectedMenu.size()) {
+					menuSize = mSelectedMenu.size();
+				}
+			}
+
+			for (int i = 0; i < menuSize; i++) {
 				MenuItem item = mMenu.getItem(i);
-				if (colors != null && colors.length >= mMenu.size() && colors[i] != 0) {
+				if (colors != null && colors.length >= menuSize && colors[i] != 0) {
 					AHBottomNavigationItem navigationItem = new AHBottomNavigationItem(String.valueOf(item.getTitle()), item.getIcon(), colors[i]);
+					if (mSelectedMenu != null) {
+						MenuItem selectedItem = mSelectedMenu.getItem(i);
+						navigationItem = new AHBottomNavigationItem(String.valueOf(item.getTitle()), item.getIcon(), selectedItem.getIcon(), colors[i]);
+					}
 					navigationItems.add(navigationItem);
 				} else {
 					AHBottomNavigationItem navigationItem = new AHBottomNavigationItem(String.valueOf(item.getTitle()), item.getIcon());
+					if (mSelectedMenu != null) {
+						MenuItem selectedItem = mSelectedMenu.getItem(i);
+						navigationItem = new AHBottomNavigationItem(String.valueOf(item.getTitle()), item.getIcon(), selectedItem.getIcon());
+					}
 					navigationItems.add(navigationItem);
 				}
 			}
