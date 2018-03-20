@@ -613,8 +613,12 @@ public class AHBottomNavigation extends FrameLayout {
 			view.setSoundEffectsEnabled(soundEffectsEnabled);
 
 			if (itemsEnabledStates[i]) {
-				icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getDrawable(context),
-						currentItem == i ? itemActiveColor : itemInactiveColor, forceTint));
+				if (current) {
+					icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getSelectedDrawable(context)));
+				} else {
+					icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getDrawable(context),
+							currentItem == i ? itemActiveColor : itemInactiveColor, forceTint));
+				}
 				title.setTextColor(currentItem == i ? itemActiveColor : itemInactiveColor);
 				title.setAlpha(currentItem == i ? 1 : 0);
 				view.setOnClickListener(new OnClickListener() {
