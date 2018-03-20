@@ -654,6 +654,16 @@ public class AHBottomNavigation extends FrameLayout {
 
 		if (currentItem == itemIndex) {
 			if (tabSelectedListener != null && useCallback) {
+				final View view = views.get(0);
+				view.setSelected(true);
+				ImageView icon = view.findViewById(R.id.bottom_navigation_item_icon);
+
+				if (forceTint) {
+					AHHelper.updateDrawableColor(context, items.get(itemIndex).getDrawable(context), icon,
+							itemInactiveColor, itemActiveColor, forceTint);
+				} else {
+					AHHelper.updateDrawable(context, items.get(itemIndex).getSelectedDrawable(context), icon);
+				}
 				tabSelectedListener.onTabSelected(itemIndex, true);
 			}
 			return;
@@ -686,9 +696,9 @@ public class AHBottomNavigation extends FrameLayout {
 
 			if (i == itemIndex) {
 
-				final TextView title = (TextView) view.findViewById(R.id.bottom_navigation_item_title);
-				final ImageView icon = (ImageView) view.findViewById(R.id.bottom_navigation_item_icon);
-				final TextView notification = (TextView) view.findViewById(R.id.bottom_navigation_notification);
+				final TextView title = view.findViewById(R.id.bottom_navigation_item_title);
+				final ImageView icon = view.findViewById(R.id.bottom_navigation_item_icon);
+				final TextView notification = view.findViewById(R.id.bottom_navigation_notification);
 
 				icon.setSelected(true);
 				AHHelper.updateTopMargin(icon, inactiveMarginTop, activeMarginTop);
