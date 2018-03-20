@@ -475,8 +475,12 @@ public class AHBottomNavigation extends FrameLayout {
 						updateItems(itemIndex, true);
 					}
 				});
-				icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getDrawable(context),
-						current ? itemActiveColor : itemInactiveColor, forceTint));
+				if (current) {
+					icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getSelectedDrawable(context)));
+				} else {
+					icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getDrawable(context),
+							current ? itemActiveColor : itemInactiveColor, forceTint));
+				}
 				title.setTextColor(current ? itemActiveColor : itemInactiveColor);
 				view.setSoundEffectsEnabled(soundEffectsEnabled);
 			} else {
